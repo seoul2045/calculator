@@ -13,9 +13,27 @@
 <body>
 <script>
   // Multiplication function
+  let multiply = numbers => {
+    let numArray = numbers;
+    console.log("numArray values: " + numArray);
+    let solution = numArray.reduce(function(total, num) {
+      return total * num;
+    })
+    console.log(solution);
+    return solution;
+  }
   // Exponents function
   // Divison function
   // Subtraction function
+  let subtract = numbers => {
+    let numArray = numbers;
+    console.log("numArray value: " + numArray);
+    let solution = numArray.reduce(function(total, num) {
+      return total - num;
+    })
+    console.log(solution);
+    return solution;
+  }
   // Addition function
   let add = numbers => {
     let numArray = numbers;
@@ -27,7 +45,7 @@
     return solution;
   }
 
-  add([6, 8]);
+  multiply([8, 6]);
 </script>
 </body>
 </html>
