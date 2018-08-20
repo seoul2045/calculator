@@ -1,70 +1,87 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Calculator</title>
-  <style>
-    input {
-      font-size: 2em;
-      margin: 10px 1px 0;
+<html lang="en">
+  <head>
+    <title>Calculator</title>
+    <meta charset="utf-8">
+    <!-- bootstrap 4 -->
+    <!-- mobile first rendering and touch zooming -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <!-- bootstrap 4 end  -->
+
+    <style>
+      input {
+        font-size: 2em;
+        margin: 10px 1px 0;
+      }
+    </style>
+  </head>
+  <body>
+  <script>
+    // Multiplication function
+    let multiply = numbers => {
+      let numArray = numbers;
+      console.log("numArray values: " + numArray);
+      let solution = numArray.reduce(function(total, num) {
+        return total * num;
+      })
+      console.log(solution);
+      return solution;
     }
-  </style>
-</head>
-<body>
-<script>
-  // Multiplication function
-  let multiply = numbers => {
-    let numArray = numbers;
-    console.log("numArray values: " + numArray);
-    let solution = numArray.reduce(function(total, num) {
-      return total * num;
-    })
-    console.log(solution);
-    return solution;
-  }
-  // Exponents function
-  let exponentiation = numbers => {
-    let numArray = numbers;
-    console.log("numArray exponentiation value: " + numArray)
-    let solution = numArray.reduce(function(total, num) {
-      return total ** num;
-    })
-    console.log(solution);
-    return solution;
-  }
-  // Divison function
-  let division = numbers => {
-    let numArray = numbers;
-    console.log("numArray division value: " + numArray);
-    let solution = numArray.reduce(function(total, num) {
-      return total / num;
-    })
-    console.log(solution);
-    return solution;
-  }
+    // Exponents function
+    let exponent = numbers => {
+      let numArray = numbers;
+      console.log("numArray exponentiation value: " + numArray)
+      let solution = numArray.reduce(function(total, num) {
+        return total ** num;
+      })
+      console.log(solution);
+      return solution;
+    }
+    // Divison function
+    let divide = numbers => {
+      let numArray = numbers;
+      console.log("numArray division value: " + numArray);
+      let solution = numArray.reduce(function(total, num) {
+        return total / num;
+      })
+      console.log(solution);
+      return solution;
+    }
 
-  // Subtraction function
-  let subtract = numbers => {
-    let numArray = numbers;
-    console.log("numArray value: " + numArray);
-    let solution = numArray.reduce(function(total, num) {
-      return total - num;
-    })
-    console.log(solution);
-    return solution;
-  }
-  // Addition function
-  let add = numbers => {
-    let numArray = numbers;
-    console.log("numArray value: " + numArray);
-    let solution = numArray.reduce(function(total, num) {
-      return total + num;
-    })
-    console.log(solution);
-    return solution;
-  }
+    // Subtraction function
+    let subtract = numbers => {
+      let numArray = numbers;
+      console.log("numArray value: " + numArray);
+      let solution = numArray.reduce(function(total, num) {
+        return total - num;
+      })
+      console.log(solution);
+      return solution;
+    }
+    // Addition function
+    let add = numbers => {
+      let numArray = numbers;
+      console.log("numArray value: " + numArray);
+      let solution = numArray.reduce(function(total, num) {
+        return total + num;
+      })
+      console.log(solution);
+      return solution;
+    }
+    // Operation function
+    let operate = numbers => {
 
-  exponentiation([4, 2]);
-</script>
-</body>
+    }
+
+    add([4, 2]);
+  </script>
+  </body>
 </html>
