@@ -23,7 +23,26 @@
     return solution;
   }
   // Exponents function
+  let exponentiation = numbers => {
+    let numArray = numbers;
+    console.log("numArray exponentiation value: " + numArray)
+    let solution = numArray.reduce(function(total, num) {
+      return total ** num;
+    })
+    console.log(solution);
+    return solution;
+  }
   // Divison function
+  let division = numbers => {
+    let numArray = numbers;
+    console.log("numArray division value: " + numArray);
+    let solution = numArray.reduce(function(total, num) {
+      return total / num;
+    })
+    console.log(solution);
+    return solution;
+  }
+
   // Subtraction function
   let subtract = numbers => {
     let numArray = numbers;
@@ -45,7 +64,7 @@
     return solution;
   }
 
-  multiply([8, 6]);
+  exponentiation([4, 2]);
 </script>
 </body>
 </html>
