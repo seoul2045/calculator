@@ -1,0 +1,19 @@
+/* calculator */
+.flex-container {
+  display: flex;
+  align-items: center; /*default*/
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+.flex-container > .row {
+
+}
+.flex-container > .row > .col {
+  text-align: center;
+  border-width: 0.5px;
+  border-color: blue;
+  border-style: solid;
+  width: 75px;
+  height: 75px;
+}
