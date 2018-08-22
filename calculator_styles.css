@@ -17,3 +17,18 @@
   width: 75px;
   height: 75px;
 }
+.flex-container > .row > .num {
+  background-color: lightgrey;
+}
+.flex-container > .row > .equals {
+  background-color: lightgreen;
+}
+.flex-container > .row > #inputDisplay {
+  width: 300px;
+  background-color: grey;
+}
+.flex-container > .row > #outputDisplay {
+  width: 300px;
+  height: 50px;
+  background-color: grey;
+}
