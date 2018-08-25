@@ -10,25 +10,21 @@ body {
   flex-wrap: wrap;
   margin-top: 50px;
 }
-.flex-container > .row {
-
-}
 .flex-container > .row > .col {
   text-align: center;
   border-width: 0.5px;
   border-color: blue;
   border-style: solid;
+}
+.flex-container > .btn-group > .btn-lg {
   width: 75px;
-  height: 75px;
-}
-.flex-container > .row > .num {
-  background-color: lightgrey;
-}
-.flex-container > .row > .equals {
-  background-color: lightgreen;
+  border-style: dotted;
+  border-color: blue;
+  border-width: 1px;
 }
 .flex-container > .row > #inputDisplay {
   width: 300px;
+  height: 75px;
   background-color: grey;
 }
 .flex-container > .row > #outputDisplay {
