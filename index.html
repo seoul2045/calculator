@@ -23,10 +23,10 @@
   <div class="flex-container">
     <!-- calcultor -->
     <div class="row">
-      <div class="col" id="inputDisplay">100 + 7</div>
+      <div class="col" id="inputDisplay"></div>
     </div>
     <div class="row">
-      <div class="col" id="outputDisplay">= 107</div>
+      <div class="col" id="outputDisplay"></div>
     </div>
     <div class="btn-group" role="group" aria-label="operators">
       <button type="button" class="btn btn-danger btn-lg" id="buttonC">C</button>
@@ -123,6 +123,7 @@
     for (index = 0; index < 20; index++) {
       document.getElementsByClassName('btn')[index].addEventListener("click", function() {
         console.log("button clicked: " + this.id);
+        document.getElementById('inputDisplay').innerHTML += this.innerHTML;
       });
     };
 
