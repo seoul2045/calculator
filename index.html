@@ -60,6 +60,8 @@
     </div>
   </div>
   <script>
+    // Global variables
+    let inputsArray = [];
     // Multiplication function
     let multiply = numbers => {
       let numArray = numbers;
@@ -127,7 +129,9 @@
     };
     storedInputs = keypress => {
       console.log("function received keypress: " + keypress);
-      // change buttons to active state
+      inputsArray.push(keypress);
+      // inputsArray.push(" ");
+      inputDisplay.innerHTML = inputsArray.join("");
       activateButtons();
     }
     // change button state to active
