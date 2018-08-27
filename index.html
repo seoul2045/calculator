@@ -29,8 +29,8 @@
       <div class="col" id="outputDisplay"></div>
     </div>
     <div class="btn-group" role="group" aria-label="operators">
-      <button type="button" class="btn btn-danger btn-lg" id="buttonC">C</button>
-      <button type="button" class="btn btn-secondary btn-lg" id="buttonParenthesis">()</button>
+      <button type="button" class="btn btn-danger btn-lg" id="buttonClear">C</button>
+      <button type="button" class="btn btn-secondary btn-lg" id="buttonParenthesis">( )</button>
       <button type="button" class="btn btn-secondary btn-lg" id="buttonPercent">%</button>
       <button type="button" class="btn btn-secondary btn-lg" id="buttonDivide">÷</button>
     </div>
@@ -44,7 +44,7 @@
       <button type="button" class="btn btn-dark btn-lg" id="button4">4</button>
       <button type="button" class="btn btn-dark btn-lg" id="button5">5</button>
       <button type="button" class="btn btn-dark btn-lg" id="button6">6</button>
-      <button type="button" class="btn btn-secondary btn-lg" id="buttonSubtract">__</button>
+      <button type="button" class="btn btn-secondary btn-lg" id="buttonSubtract">--</button>
     </div>
     <div class="btn-group" role="group" aria-label="numbers">
       <button type="button" class="btn btn-dark btn-lg" id="button1">1</button>
@@ -117,16 +117,27 @@
     }
 
     // Assign 20 button click event listeners
-    // document.getElementById('buttonC').addEventListener("click", function(){
-    //   console.log("C");
-    // });
     for (index = 0; index < 20; index++) {
       document.getElementsByClassName('btn')[index].addEventListener("click", function() {
         console.log("button clicked: " + this.id);
-        document.getElementById('inputDisplay').innerHTML += this.innerHTML;
+        // call function to store values
+        storedInputs(this.innerHTML);
+        //document.getElementById('inputDisplay').innerHTML += this.innerHTML;
       });
     };
+    storedInputs = keypress => {
+      console.log("function received keypress: " + keypress);
+      // change buttons to active state
+      activateButtons();
+    }
+    // change button state to active
+    activateButtons = keypress => {
 
+    }
+    // change button state to disabled
+    disableButtons = keypress => {
+
+    }
     // Start program
     add([4, 2]);
   </script>
