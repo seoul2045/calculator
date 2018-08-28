@@ -123,17 +123,21 @@
       document.getElementsByClassName('btn')[index].addEventListener("click", function() {
         console.log("button clicked: " + this.id);
         // call function to store values
-        storedInputs(this.innerHTML);
+        keypressInput(this.innerHTML);
+        // maybe add a special data variable to store keypress values instead of innerHTML, which will be useful for the +/- key
         //document.getElementById('inputDisplay').innerHTML += this.innerHTML;
       });
     };
-    storedInputs = keypress => {
-      console.log("function received keypress: " + keypress);
-      inputsArray.push(keypress);
-      // inputsArray.push(" ");
-      inputDisplay.innerHTML = inputsArray.join("");
-      activateButtons();
+    keypressInput = keypressValue => {
+      
     }
+    // storedInputs = keypress => {
+    //   console.log("function received keypress: " + keypress);
+    //   inputsArray.push(keypress);
+    //   // inputsArray.push(" ");
+    //   inputDisplay.innerHTML = inputsArray.join("");
+    //   activateButtons();
+    // }
     // change button state to active
     activateButtons = keypress => {
 
