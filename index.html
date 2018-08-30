@@ -121,15 +121,19 @@
     // Assign 20 button click event listeners
     for (index = 0; index < 20; index++) {
       document.getElementsByClassName('btn')[index].addEventListener("click", function() {
-        console.log("button clicked: " + this.id);
+        console.log("button clicked: " + this.innerHTML);
         // call function to store values
         keypressInput(this.innerHTML);
+        activateButtons();
         // maybe add a special data variable to store keypress values instead of innerHTML, which will be useful for the +/- key
         //document.getElementById('inputDisplay').innerHTML += this.innerHTML;
       });
     };
     keypressInput = keypressValue => {
-      
+
+    }
+    inputHistory = keypress => {
+
     }
     // storedInputs = keypress => {
     //   console.log("function received keypress: " + keypress);
@@ -140,14 +144,31 @@
     // }
     // change button state to active
     activateButtons = keypress => {
-
+      if (inputsArray.length != 0) {
+        document.getElementById('buttonClear').classList.remove('disabled');
+        document.getElementById('buttonPercent').classList.remove('disabled');
+        document.getElementById('buttonDivide').classList.remove('disabled');
+        document.getElementById('buttonMultipy').classList.remove('disabled');
+        document.getElementById('buttonSubtract').classList.remove('disabled');
+        document.getElementById('buttonAdd').classList.remove('disabled');
+        document.getElementById('buttonEquals').classList.remove('disabled');
+      }
     }
     // change button state to disabled
     disableButtons = keypress => {
-
+      if (inputsArray.length == 0) {
+        document.getElementById('buttonClear').classList.add('disabled');
+        document.getElementById('buttonPercent').classList.add('disabled');
+        document.getElementById('buttonDivide').classList.add('disabled');
+        document.getElementById('buttonMultipy').classList.add('disabled');
+        document.getElementById('buttonSubtract').classList.add('disabled');
+        document.getElementById('buttonAdd').classList.add('disabled');
+        document.getElementById('buttonEquals').classList.add('disabled');
+      }
     }
     // Start program
     add([4, 2]);
+    disableButtons(0);
   </script>
   </body>
 </html>
