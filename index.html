@@ -62,6 +62,8 @@
   <script>
     // Global variables
     let inputsArray = [];
+    const operatorValue = ["C", "( )", "÷", "x", "--", "+", "="];
+    const numSymbol = [".", "+/-", "%"];
     // Multiplication function
     let multiply = numbers => {
       let numArray = numbers;
@@ -126,11 +128,24 @@
         keypressInput(this.innerHTML);
         activateButtons();
         // maybe add a special data variable to store keypress values instead of innerHTML, which will be useful for the +/- key
-        //document.getElementById('inputDisplay').innerHTML += this.innerHTML;
       });
     };
+    // input logic
     keypressInput = keypressValue => {
-
+      if (!operatorValue.includes(keypressValue) && // a number is input
+          !operatorValue.includes(inputsArray.length - 1) &&
+          !inputsArray[inputsArray.length - 1] == keypressValue) {
+            inputsArray.push(keypressValue);
+            displayInput(keypressValue);
+      } else if (numSymbol.includes(keypressValue) && // a symbol is input
+                 !inputsArray[inputsArray.length - 1] == keypressValue) {
+                   inputsArray.push(keypressValue);
+                   displayInput(keypressValue);
+      };
+    };
+    // update user display after keypress reviewed
+    displayInput = keypressValue => {
+      document.getElementById('inputDisplay').innerHTML += keypressValue;
     }
     inputHistory = keypress => {
 
