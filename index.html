@@ -29,41 +29,41 @@
       <div class="col" id="outputDisplay"></div>
     </div>
     <div class="btn-group" role="group" aria-label="operators">
-      <button type="button" class="btn btn-danger btn-lg" id="buttonClear">C</button>
-      <button type="button" class="btn btn-secondary btn-lg" id="buttonParenthesis">( )</button>
-      <button type="button" class="btn btn-secondary btn-lg" id="buttonPercent">%</button>
-      <button type="button" class="btn btn-secondary btn-lg" id="buttonDivide">÷</button>
+      <button type="button" class="btn btn-danger btn-lg" id="buttonClear" data-key-value="">C</button>
+      <button type="button" class="btn btn-secondary btn-lg" id="buttonParenthesis" data-key-value="">( )</button>
+      <button type="button" class="btn btn-secondary btn-lg" id="buttonPercent" data-key-value="">%</button>
+      <button type="button" class="btn btn-secondary btn-lg" id="buttonDivide" data-key-value="">÷</button>
     </div>
     <div class="btn-group" role="group" aria-label="numbers">
-      <button type="button" class="btn btn-dark btn-lg" id="button7">7</button>
-      <button type="button" class="btn btn-dark btn-lg"  id="button8">8</button>
-      <button type="button" class="btn btn-dark btn-lg" id="button9">9</button>
-      <button type="button" class="btn btn-secondary btn-lg" id="buttonMultipy">x</button>
+      <button type="button" class="btn btn-dark btn-lg" id="button7" data-key-value="">7</button>
+      <button type="button" class="btn btn-dark btn-lg"  id="button8" data-key-value="">8</button>
+      <button type="button" class="btn btn-dark btn-lg" id="button9" data-key-value="">9</button>
+      <button type="button" class="btn btn-secondary btn-lg" id="buttonMultipy" data-key-value="">x</button>
     </div>
     <div class="btn-group" role="group" aria-label="numbers">
-      <button type="button" class="btn btn-dark btn-lg" id="button4">4</button>
-      <button type="button" class="btn btn-dark btn-lg" id="button5">5</button>
-      <button type="button" class="btn btn-dark btn-lg" id="button6">6</button>
-      <button type="button" class="btn btn-secondary btn-lg" id="buttonSubtract">--</button>
+      <button type="button" class="btn btn-dark btn-lg" id="button4" data-key-value="">4</button>
+      <button type="button" class="btn btn-dark btn-lg" id="button5" data-key-value="">5</button>
+      <button type="button" class="btn btn-dark btn-lg" id="button6" data-key-value="">6</button>
+      <button type="button" class="btn btn-secondary btn-lg" id="buttonSubtract" data-key-value="">--</button>
     </div>
     <div class="btn-group" role="group" aria-label="numbers">
-      <button type="button" class="btn btn-dark btn-lg" id="button1">1</button>
-      <button type="button" class="btn btn-dark btn-lg" id="button2">2</button>
-      <button type="button" class="btn btn-dark btn-lg" id="button3">3</button>
-      <button type="button" class="btn btn-secondary btn-lg" id="buttonAdd">+</button>
+      <button type="button" class="btn btn-dark btn-lg" id="button1" data-key-value="">1</button>
+      <button type="button" class="btn btn-dark btn-lg" id="button2" data-key-value="">2</button>
+      <button type="button" class="btn btn-dark btn-lg" id="button3" data-key-value="">3</button>
+      <button type="button" class="btn btn-secondary btn-lg" id="buttonAdd" data-key-value="">+</button>
     </div>
     <div class="btn-group" role="group" aria-label="operators">
-      <button type="button" class="btn btn-dark btn-lg" id="buttonPosNeg">+/-</button>
-      <button type="button" class="btn btn-dark btn-lg" id="button0">0</button>
-      <button type="button" class="btn btn-dark btn-lg" id="buttonDecimal">.</button>
-      <button type="button" class="btn btn-success btn-lg" id="buttonEquals">=</button> <!-- add "disabled" to class name -->
+      <button type="button" class="btn btn-dark btn-lg" id="buttonPosNeg" data-key-value="">+/-</button>
+      <button type="button" class="btn btn-dark btn-lg" id="button0" data-key-value="">0</button>
+      <button type="button" class="btn btn-dark btn-lg" id="buttonDecimal" data-key-value="">.</button>
+      <button type="button" class="btn btn-success btn-lg" id="buttonEquals" data-key-value="">=</button> <!-- add "disabled" to class name -->
     </div>
   </div>
   <script>
     // Global variables
     let inputsArray = [];
-    const operatorValue = ["C", "( )", "÷", "x", "--", "+", "="];
-    const numSymbol = [".", "+/-", "%"];
+    const operatorValue = ["C", "÷", "x", "--", "+", "="];
+    const numSymbol = [".", "+/-", "%", "( )"];
     // Multiplication function
     let multiply = numbers => {
       let numArray = numbers;
@@ -138,26 +138,31 @@
           !numSymbol.includes(keypressValue)) {
             console.log("a number was input");
             inputsArray.push(keypressValue);
-            displayInput(keypressValue);
+            displayInput();
       } else if (numSymbol.includes(keypressValue)) { // a symbol is input
-          // !inputsArray[inputsArray.length - 1] == keypressValue) {
           console.log("a symbol was input");
-          inputsArray.push(keypressValue);
-          displayInput(keypressValue);
+          if (numSymbol.includes(inputsArray[inputsArray.length - 1])) { // remove previously entered symbol from inputsArray and display
+            inputsArray.splice((inputsArray.length - 1), 1, keypressValue)
+            displayInput();
+          } else {
+            inputsArray.push(keypressValue);
+            displayInput();
+          }
       } else if (operatorValue.includes(keypressValue)) { // an operator was input
           console.log("an operator was input");
           if (operatorValue.includes(inputsArray[inputsArray.length - 1])) { // remove previously entered operator from inputsArray and display
             inputsArray.splice((inputsArray.length - 1), 1, keypressValue);
-            displayInput(keypressValue);
+            displayInput();
           } else { // immediately push value to inputsArray and display
               inputsArray.push(keypressValue);
-              displayInput(keypressValue);
+              displayInput();
           }
       };
     };
     // update user display after keypress reviewed
     displayInput = keypressValue => {
-      document.getElementById('inputDisplay').innerHTML += keypressValue;
+      document.getElementById('inputDisplay').innerHTML = inputsArray.join("");
+      // document.getElementById('inputDisplay').innerHTML += keypressValue;
     }
     inputHistory = keypress => {
 
