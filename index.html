@@ -131,16 +131,28 @@
       });
     };
     // input logic
+    // !operatorValue.includes(inputsArray.length - 1)
+    // !inputsArray[inputsArray.length - 1] == keypressValue)
     keypressInput = keypressValue => {
       if (!operatorValue.includes(keypressValue) && // a number is input
-          !operatorValue.includes(inputsArray.length - 1) &&
-          !inputsArray[inputsArray.length - 1] == keypressValue) {
+          !numSymbol.includes(keypressValue)) {
+            console.log("a number was input");
             inputsArray.push(keypressValue);
             displayInput(keypressValue);
-      } else if (numSymbol.includes(keypressValue) && // a symbol is input
-                 !inputsArray[inputsArray.length - 1] == keypressValue) {
-                   inputsArray.push(keypressValue);
-                   displayInput(keypressValue);
+      } else if (numSymbol.includes(keypressValue)) { // a symbol is input
+          // !inputsArray[inputsArray.length - 1] == keypressValue) {
+          console.log("a symbol was input");
+          inputsArray.push(keypressValue);
+          displayInput(keypressValue);
+      } else if (operatorValue.includes(keypressValue)) { // an operator was input
+          console.log("an operator was input");
+          if (operatorValue.includes(inputsArray[inputsArray.length - 1])) { // remove previously entered operator from inputsArray and display
+            inputsArray.splice((inputsArray.length - 1), 1, keypressValue);
+            displayInput(keypressValue);
+          } else { // immediately push value to inputsArray and display
+              inputsArray.push(keypressValue);
+              displayInput(keypressValue);
+          }
       };
     };
     // update user display after keypress reviewed
