@@ -44,7 +44,7 @@
       <button type="button" class="btn btn-dark btn-lg" id="button4" data-key-value="4">4</button>
       <button type="button" class="btn btn-dark btn-lg" id="button5" data-key-value="5">5</button>
       <button type="button" class="btn btn-dark btn-lg" id="button6" data-key-value="6">6</button>
-      <button type="button" class="btn btn-secondary btn-lg" id="buttonSubtract" data-key-value="-">--</button>
+      <button type="button" class="btn btn-secondary btn-lg" id="buttonSubtract" data-key-value="–">–</button>
     </div>
     <div class="btn-group" role="group" aria-label="numbers">
       <button type="button" class="btn btn-dark btn-lg" id="button1" data-key-value="1">1</button>
@@ -62,8 +62,11 @@
   <script>
     // Global variables
     let inputsArray = [];
-    const operatorValue = ["C", "÷", "x", "--", "+", "="];
-    const numSymbol = [".", "+/-", "%", "( )"];
+    const clearOperator = ["C"];
+    const equalsOperator = ["="];
+    const parenthesisSymbol = ["()"];
+    const operatorValue = ["÷", "x", "–", "+"];
+    const numSymbol = [".", "-", "%"];
     // Multiplication function
     let multiply = numbers => {
       let numArray = numbers;
@@ -125,40 +128,65 @@
       document.getElementsByClassName('btn')[index].addEventListener("click", function() {
         console.log("button clicked: " + this.innerHTML);
         // call function to store values
-        keypressInput(this.innerHTML);
+        keypressInput(this.getAttribute("data-key-value"));
+        //keypressInput(this.innerHTML);
         activateButtons();
         // maybe add a special data variable to store keypress values instead of innerHTML, which will be useful for the +/- key
       });
     };
     // input logic
-    // !operatorValue.includes(inputsArray.length - 1)
-    // !inputsArray[inputsArray.length - 1] == keypressValue)
     keypressInput = keypressValue => {
-      if (!operatorValue.includes(keypressValue) && // a number is input
-          !numSymbol.includes(keypressValue)) {
-            console.log("a number was input");
-            inputsArray.push(keypressValue);
-            displayInput();
-      } else if (numSymbol.includes(keypressValue)) { // a symbol is input
-          console.log("a symbol was input");
-          if (numSymbol.includes(inputsArray[inputsArray.length - 1])) { // remove previously entered symbol from inputsArray and display
-            inputsArray.splice((inputsArray.length - 1), 1, keypressValue)
-            displayInput();
-          } else {
-            inputsArray.push(keypressValue);
-            displayInput();
-          }
-      } else if (operatorValue.includes(keypressValue)) { // an operator was input
-          console.log("an operator was input");
-          if (operatorValue.includes(inputsArray[inputsArray.length - 1])) { // remove previously entered operator from inputsArray and display
-            inputsArray.splice((inputsArray.length - 1), 1, keypressValue);
-            displayInput();
-          } else { // immediately push value to inputsArray and display
+      if (operatorValue.includes(keypressValue)) { // operator is input
+        verifyOpLogic(keypressValue);
+      } else if (!Number.isNaN(keypressValue)) { // number is input
+          inputsArray.push(keypressValue);
+          displayInput();
+      }
+    };
+
+    let verifyOpLogic = keypressValue => {
+      console.log("verify called");
+      if (inputsArray[inputsArray.length - 1] == undefined) {
+        console.log("array is empty");
+        return;
+      } else {
+          let arrayValue = inputsArray[inputsArray.length - 1].valueOf();
+            if (!Number.isNaN(arrayValue)) { // check for number before pushing operator
               inputsArray.push(keypressValue);
               displayInput();
-          }
-      };
+            }
+      }
     };
+    // !operatorValue.includes(inputsArray.length - 1)
+    // !inputsArray[inputsArray.length - 1] == keypressValue)
+    // keypressInput = keypressValue => {
+    //   if (!operatorValue.includes(keypressValue) && // a number is input
+    //       !numSymbol.includes(keypressValue)) {
+    //         console.log("a number was input");
+    //         inputsArray.push(keypressValue);
+    //         displayInput();
+    //   } else if (numSymbol.includes(keypressValue)) { // a symbol is input
+    //       console.log("a symbol was input");
+    //       if (numSymbol.includes(inputsArray[inputsArray.length - 1])) { // remove previously entered symbol from inputsArray and display
+    //         inputsArray.splice((inputsArray.length - 1), 1, keypressValue)
+    //         displayInput();
+    //       } else {
+    //         inputsArray.push(keypressValue);
+    //         displayInput();
+    //       }
+    //   } else if (operatorValue.includes(keypressValue)) { // an operator was input
+    //       console.log("an operator was input");
+    //       if (operatorValue.includes(inputsArray[inputsArray.length - 1])) { // remove previously entered operator from inputsArray and display
+    //         inputsArray.splice((inputsArray.length - 1), 1, keypressValue);
+    //         displayInput();
+    //       } else if (inputsArray.length == 0) { // immediately push value to inputsArray and display
+    //           disableButtons();
+    //       } else {
+    //           inputsArray.push(keypressValue);
+    //           displayInput();
+    //       }
+    //   };
+    // };
     // update user display after keypress reviewed
     displayInput = keypressValue => {
       document.getElementById('inputDisplay').innerHTML = inputsArray.join("");
