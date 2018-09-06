@@ -66,7 +66,9 @@
     const equalsOperator = ["="];
     const parenthesisSymbol = ["()"];
     const operatorValue = ["÷", "x", "-", "+"];
-    const numSymbol = [".", "-", "%"];
+    const percentSymbol = ["%"];
+    const decimalSymbol = ["."];
+    const negSymbol = ["-"];
     // Multiplication function
     let multiply = numbers => {
       let numArray = numbers;
@@ -136,13 +138,28 @@
     };
     // input logic
     keypressInput = keypressValue => {
+      let numSearch = /[^0-9]/; // find a character that is not a digit
+      let decimalSearch = /([0-9, .])/; // find a character that is not a digit or decimal
       if (operatorValue.includes(keypressValue)) { // operator is input
         verifyOpLogic(keypressValue);
-      } else if (!Number.isNaN(keypressValue)) { // number is input
+      } else if (!numSearch.test(keypressValue)) { // only numbers input
+          inputsArray.push(keypressValue);
+          displayInput();
+      } else if (decimalSymbol.includes(keypressValue)) {
+          verifyDecLogic(keypressValue);
+      }
+    };
+
+    let verifyDecLogic = keypressValue => {
+      if (inputsArray[inputsArray.length - 1 == "%"]) { // decimal cannot follow percentSymbol
+        return;
+      } else if (inputsArray[inputsArray.length - 1] == keypressValue) { // do not allow trailing decimals
+          return;
+      } else {
           inputsArray.push(keypressValue);
           displayInput();
       }
-    };
+    }
 
     let verifyOpLogic = keypressValue => {
       console.log("verify called");
@@ -153,7 +170,7 @@
           displayInput();
       } else {
           let arrayValue = inputsArray[inputsArray.length - 1].valueOf(); // assign primative value
-            if (!Number.isNaN(arrayValue)) { // check array for a number before pushing operator
+            if (typeof (arrayValue) == "number") { // check array for a number before pushing operator
               inputsArray.push(keypressValue);
               displayInput();
             }
