@@ -65,10 +65,13 @@
     const clearOperator = ["C"];
     const equalsOperator = ["="];
     const parenthesisSymbol = ["()"];
-    const operatorValue = ["÷", "x", "-", "+"];
+    const operatorValue = ["÷", "x", "‒", "+"];
     const percentSymbol = ["%"];
     const decimalSymbol = ["."];
     const negSymbol = ["-"];
+    const numSearch = /[^0-9]/; // find a character that is not a digit
+    const decimalSearch = /([0-9, .])/; // find a character that is not a digit or decimal
+
     // Multiplication function
     let multiply = numbers => {
       let numArray = numbers;
@@ -138,8 +141,6 @@
     };
     // input logic
     keypressInput = keypressValue => {
-      let numSearch = /[^0-9]/; // find a character that is not a digit
-      let decimalSearch = /([0-9, .])/; // find a character that is not a digit or decimal
       if (operatorValue.includes(keypressValue)) { // operator is input
         verifyOpLogic(keypressValue);
       } else if (!numSearch.test(keypressValue)) { // only numbers input
@@ -162,15 +163,14 @@
     }
 
     let verifyOpLogic = keypressValue => {
-      console.log("verify called");
-      if (inputsArray[inputsArray.length - 1] == undefined) { // check if array is empty
+      if (inputsArray.length == 0) { // check if array is empty
         return;
       } else if (operatorValue.includes(inputsArray[inputsArray.length - 1])) { // splice previously entered operator
           inputsArray.splice((inputsArray.length - 1), 1, keypressValue);
           displayInput();
       } else {
           let arrayValue = inputsArray[inputsArray.length - 1].valueOf(); // assign primative value
-            if (typeof (arrayValue) == "number") { // check array for a number before pushing operator
+            if (!numSearch.test(arrayValue)) { // check array for a number before pushing operator
               inputsArray.push(keypressValue);
               displayInput();
             }
