@@ -71,7 +71,7 @@
     const negSymbol = ["-"];
     const numSearch = /[^0-9]/; // find a character that is not a digit
     const decimalSearch = /([0-9, .])/; // find a character that is not a digit or decimal
-
+    const decimalLogic = /\W[.](?![÷|x|‒|+|%])/; // search for non-word character \W decimal [.] not followed ?! by any operator
     // Multiplication function
     let multiply = numbers => {
       let numArray = numbers;
@@ -152,15 +152,27 @@
     };
 
     let verifyDecLogic = keypressValue => {
-      if (inputsArray[inputsArray.length - 1 == "%"]) { // decimal cannot follow percentSymbol
-        return;
-      } else if (inputsArray[inputsArray.length - 1] == keypressValue) { // do not allow trailing decimals
+      if (decimalLogic.test(inputsArray)) { // search for an operator after preceeding decimal to avoid multiple decimals in a one number
+          console.log("no operator after previous decimal!");
           return;
       } else {
           inputsArray.push(keypressValue);
           displayInput();
       }
     }
+    // let verifyDecLogic = keypressValue => {
+    //   if (inputsArray[inputsArray.length - 1 == "%"]) { // decimal cannot follow percentSymbol
+    //     return;
+    //   } else if (inputsArray[inputsArray.length - 1] == keypressValue) { // do not allow trailing decimals
+    //       return;
+    //   } else if (decimalLogic.test(inputsArray)) { // search for an operator after preceeding decimal to avoid multiple decimals in a one number
+    //       console.log("no operator after previous decimal!");
+    //       return;
+    //   } else {
+    //       inputsArray.push(keypressValue);
+    //       displayInput();
+    //   }
+    // }
 
     let verifyOpLogic = keypressValue => {
       if (inputsArray.length == 0) { // check if array is empty
