@@ -71,7 +71,8 @@
     const negSymbol = ["-"];
     const numSearch = /[^0-9]/; // find a character that is not a digit
     const decimalSearch = /([0-9, .])/; // find a character that is not a digit or decimal
-    const decimalLogic = /\W[.](?![÷|x|‒|+|%])/; // search for non-word character \W decimal [.] not followed ?! by any operator
+    // const decimalLogic = /\W[.](?![÷|x|‒|+|%])/; // search for non-word character \W decimal [.] not followed ?! by any operator
+    const decimalLogic = /\W(.)(?![÷x‒+%])/; // search for non-word character \W decimal [.] not followed ?! by any operator
     // Multiplication function
     let multiply = numbers => {
       let numArray = numbers;
@@ -152,11 +153,12 @@
     };
 
     let verifyDecLogic = keypressValue => {
-      if (decimalLogic.test(inputsArray)) { // search for an operator after preceeding decimal to avoid multiple decimals in a one number
+      if (decimalLogic.test(inputsArray.join(" "))) { // search for an operator after preceeding decimal to avoid multiple decimals in a one number
           console.log("no operator after previous decimal!");
           return;
       } else {
           inputsArray.push(keypressValue);
+          console.log("decimal printed via else statement!");
           displayInput();
       }
     }
