@@ -69,10 +69,12 @@
     const percentSymbol = ["%"];
     const decimalSymbol = ["."];
     const negSymbol = ["-"];
-    const numSearch = /[^0-9]/; // find a character that is not a digit
+    const numSearch = /[0-9]/; // find a character that is not a digit
     const decimalSearch = /([0-9, .])/; // find a character that is not a digit or decimal
     // const decimalLogic = /\W[.](?![÷|x|‒|+|%])/; // search for non-word character \W decimal [.] not followed ?! by any operator
-    const decimalLogic = /\W(.)(?![÷x‒+%])/; // search for non-word character \W decimal [.] not followed ?! by any operator
+    const decimalLogic = /\.(?![÷x‒+%])/; // search for non-word character \W decimal [.] not followed ?! by any operator
+    // const decimalLogic2 = /\.(?![0-9*][÷x‒+%])/;
+    const decimalLogic2 = /\.(?![0-9*][÷x‒+%])/;
     // Multiplication function
     let multiply = numbers => {
       let numArray = numbers;
@@ -132,19 +134,17 @@
     // Assign 20 button click event listeners
     for (index = 0; index < 20; index++) {
       document.getElementsByClassName('btn')[index].addEventListener("click", function() {
-        console.log("button clicked: " + this.innerHTML);
+        console.log("button clicked: " + this.getAttribute("data-key-value"));
         // call function to store values
         keypressInput(this.getAttribute("data-key-value"));
-        //keypressInput(this.innerHTML);
         activateButtons();
-        // maybe add a special data variable to store keypress values instead of innerHTML, which will be useful for the +/- key
       });
     };
     // input logic
     keypressInput = keypressValue => {
       if (operatorValue.includes(keypressValue)) { // operator is input
         verifyOpLogic(keypressValue);
-      } else if (!numSearch.test(keypressValue)) { // only numbers input
+      } else if (numSearch.test(keypressValue)) { // only numbers input
           inputsArray.push(keypressValue);
           displayInput();
       } else if (decimalSymbol.includes(keypressValue)) {
@@ -153,7 +153,7 @@
     };
 
     let verifyDecLogic = keypressValue => {
-      if (decimalLogic.test(inputsArray.join(" "))) { // search for an operator after preceeding decimal to avoid multiple decimals in a one number
+      if (decimalLogic2.test(inputsArray.join(""))) { // search for an operator after preceeding decimal to avoid multiple decimals in a one number
           console.log("no operator after previous decimal!");
           return;
       } else {
@@ -183,8 +183,8 @@
           inputsArray.splice((inputsArray.length - 1), 1, keypressValue);
           displayInput();
       } else {
-          let arrayValue = inputsArray[inputsArray.length - 1].valueOf(); // assign primative value
-            if (!numSearch.test(arrayValue)) { // check array for a number before pushing operator
+          let arrayValue = inputsArray[inputsArray.length - 1]; // assign primative value
+            if (numSearch.test(arrayValue)) { // check array for a preceeding number before push
               inputsArray.push(keypressValue);
               displayInput();
             }
