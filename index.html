@@ -33,7 +33,7 @@
       <button type="button" class="btn btn-dark btn-md" id="buttonClearPrev" data-key-value="clearPrev"><<</button>
     </div>
     <div class="btn-group" role="group" aria-label="operators">
-      <button type="button" class="btn btn-danger btn-lg" id="buttonClearAll" data-key-value="C">C</button>
+      <button type="button" class="btn btn-danger btn-lg" id="buttonClearAll" data-key-value="clearArray">C</button>
       <button type="button" class="btn btn-secondary btn-lg" id="buttonParenthesis" data-key-value="()">( )</button>
       <button type="button" class="btn btn-secondary btn-lg" id="buttonPercent" data-key-value="%">%</button>
       <button type="button" class="btn btn-secondary btn-lg" id="buttonDivide" data-key-value="÷">÷</button>
@@ -74,6 +74,7 @@
     const decimalSymbol = ["."];
     const negSymbol = ["-"];
     const popArrayValue = "clearPrev";
+    const clearAllArrayValues = "clearArray"
     const numSearch = /[0-9]/; // find a character that is not a digit
     const decimalSearch = /([0-9, .])/; // find a character that is not a digit or decimal
     // const decimalLogic = /\W[.](?![÷|x|‒|+|%])/; // search for non-word character \W decimal [.] not followed ?! by any operator
@@ -158,6 +159,9 @@
           verifyDecLogic(keypressValue);
       } else if (popArrayValue == keypressValue) { // pop previous array value
           inputsArray.pop();
+          displayInput();
+      } else if (clearAllArrayValues == keypressValue) {
+          inputsArray = [];
           displayInput();
       }
     };
