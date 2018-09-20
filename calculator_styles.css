@@ -1,3 +1,8 @@
+@media (min-width: 576px) {
+  width: device-width;
+  height: device-height;
+}
+
 body {
       font-size: 1em;
 }
