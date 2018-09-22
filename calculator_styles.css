@@ -1,11 +1,13 @@
-@media (min-width: 576px) {
-  .flex-container > .row,
-  .flex-container > .btn-group {
+
+
+@media screen and (min-width: 300px) and (max-width: 600px) {
+  .flex-container > .btn-group,
+  .flex-container > .btn-group > .btn {
+    flex-grow: 1;
+    margin-top: 0px;
     width: 100%;
-    height: 100%;
   }
 }
-
 body {
       font-size: 1em;
 }
@@ -14,32 +16,62 @@ body {
 .flex-container {
   display: flex;
   align-items: center; /*default*/
+  align-content: center;
+  justify-content: center;
   flex-direction: column;
   flex-wrap: wrap;
   margin-top: 50px;
 }
-.flex-container > .row > #inputDisplay {
-  border-radius: 10px 10px 0px 0px;
-  width: 297px;
-  height: 75px;
-  background-color: #343a40;
-  color: white;
+@media screen and (min-width: 601px) {
+  .flex-container > .row > #inputDisplay {
+    border-radius: 10px 10px 0px 0px;
+    width: 297px;
+    height: 75px;
+    background-color: #343a40;
+    color: white;
+  }
+  .flex-container > .row > #outputDisplay {
+    border-radius: 0px 0px 3px 3px;
+    width: 297px;
+    height: 50px;
+    background-color: #343a40;
+    color: white;
+  }
+  .flex-container > .btn-group > #miscDisplay {
+    border-radius: 5px 0px 0px 5px;
+    width: 222px;
+    height: 50px;
+    background-color: #343a40;
+    color: white;
+  }
 }
-.flex-container > .row > #outputDisplay {
-  border-radius: 0px 0px 3px 3px;
-  width: 297px;
-  height: 50px;
-  background-color: #343a40;
-  color: white;
-}
-.flex-container > .btn-group > #miscDisplay {
-  border-radius: 5px 0px 0px 5px;
-  width: 222px;
-  height: 50px;
-  background-color: #343a40;
-  color: white;
+@media screen and (min-width: 300px) and (max-width: 600px) {
+  .flex-container > .row > #inputDisplay {
+    flex-grow: 1;
+    border-radius: 10px 10px 0px 0px;
+    width: 300px;
+    height: 75px;
+    background-color: #343a40;
+    color: white;
+  }
+  .flex-container > .row > #outputDisplay {
+    flex-grow: 1;
+    border-radius: 0px 0px 3px 3px;
+    width: 300px;
+    height: 50px;
+    background-color: #343a40;
+    color: white;
+  }
+  .flex-container > .btn-group > #miscDisplay {
+    border-radius: 5px 0px 0px 5px;
+    width: 222px;
+    height: 50px;
+    background-color: #343a40;
+    color: white;
+  }
 }
 .flex-container > .row > .col {
+  width: 100%;
   text-align: center;
   border-width: 0.5px;
   border-color: blue;
@@ -53,7 +85,14 @@ body {
 }
 .flex-container > .btn-group > .btn-md {
   width: 75px;
-  /* border-style: solid; */
-  /* border-color: blue; */
-  /* border-width: 1px; */
+  border-style: solid;
+  border-color: blue;
+  border-width: 1px;
+}
+.flex-container > .btn-group > #buttonClearPrev {
+  /* flex-grow: 0; */
+  width: 75px;
+  border-style: solid;
+  border-color: blue;
+  border-width: 1px;
 }
