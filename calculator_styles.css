@@ -1,8 +1,8 @@
 
 
-@media screen and (min-width: 300px) and (max-width: 600px) {
-  .flex-container > .btn-group,
-  .flex-container > .btn-group > .btn {
+@media screen and (min-width: 300px) and (max-width: 900px) {
+  .container-fluid > .btn-group,
+  .container-fluid > .btn-group > .btn {
     flex-grow: 1;
     margin-top: 0px;
     width: 100%;
@@ -13,31 +13,32 @@ body {
 }
 
 /* calculator */
-.flex-container {
+.container-fluid {
   display: flex;
-  align-items: center; /*default*/
+  align-items: stretch;
   align-content: center;
-  justify-content: center;
+  /* justify-content: flex-start; */
   flex-direction: column;
-  flex-wrap: wrap;
-  margin-top: 50px;
+  /* flex-wrap: wrap; */
+  /* margin-top: 50px; */
 }
-@media screen and (min-width: 601px) {
-  .flex-container > .row > #inputDisplay {
+
+@media screen and (min-width: 901px) {
+  .container-fluid > .row > #inputDisplay {
     border-radius: 10px 10px 0px 0px;
     width: 297px;
     height: 75px;
     background-color: #343a40;
     color: white;
   }
-  .flex-container > .row > #outputDisplay {
+  .container-fluid > .row > #outputDisplay {
     border-radius: 0px 0px 3px 3px;
     width: 297px;
     height: 50px;
     background-color: #343a40;
     color: white;
   }
-  .flex-container > .btn-group > #miscDisplay {
+  .container-fluid > .btn-group > #miscDisplay {
     border-radius: 5px 0px 0px 5px;
     width: 222px;
     height: 50px;
@@ -45,51 +46,51 @@ body {
     color: white;
   }
 }
-@media screen and (min-width: 300px) and (max-width: 600px) {
-  .flex-container > .row > #inputDisplay {
-    flex-grow: 1;
+@media screen and (min-width: 300px) and (max-width: 900px) {
+  #inputDisplay {
+    /* flex-grow: 1; */
     border-radius: 10px 10px 0px 0px;
-    width: 300px;
+    width: 600px;
     height: 75px;
     background-color: #343a40;
     color: white;
   }
-  .flex-container > .row > #outputDisplay {
+  #outputDisplay {
     flex-grow: 1;
     border-radius: 0px 0px 3px 3px;
-    width: 300px;
+    width: 600px;
     height: 50px;
     background-color: #343a40;
     color: white;
   }
-  .flex-container > .btn-group > #miscDisplay {
+  #miscDisplay {
     border-radius: 5px 0px 0px 5px;
-    width: 222px;
+    width: 150px;
     height: 50px;
     background-color: #343a40;
     color: white;
   }
 }
-.flex-container > .row > .col {
+.container-fluid > .row > .col {
   width: 100%;
   text-align: center;
   border-width: 0.5px;
   border-color: blue;
   border-style: solid;
 }
-.flex-container > .btn-group > .btn-lg {
+.container-fluid > .btn-group > .btn-lg {
   width: 75px;
   border-style: solid;
   border-color: blue;
   /* border-width: 1px; */
 }
-.flex-container > .btn-group > .btn-md {
+.container-fluid > .btn-group > .btn-md {
   width: 75px;
   border-style: solid;
   border-color: blue;
   border-width: 1px;
 }
-.flex-container > .btn-group > #buttonClearPrev {
+.container-fluid > .btn-group > #buttonClearPrev {
   /* flex-grow: 0; */
   width: 75px;
   border-style: solid;
