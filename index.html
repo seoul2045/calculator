@@ -16,46 +16,82 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <!-- bootstrap 4 end  -->
     <!-- external stylesheet -->
-    <link rel="stylesheet" href="./calculator_styles.css" />
+    <!-- <link rel="stylesheet" href="./calculator_styles.css" /> -->
+    <style>
+      .container {
+        display: flex;
+        flex-flow: column nowrap; /*refers to positioning of elemenets along main axis of parent*/
+        border: 1px solid green;
+        height: 500px;
+        width: 315px;
+        margin: 10px;
+        align-items: stretch; /*aka align-cross - refers to positioning of elements along cross axis of parent*/
+        justify-content: ; /*aka align-main - refers to positioning along the main axis of parent*/
+      }
+      .display {
+        background-color: #343a40;
+        color: white;
+        height: 47px;
+        width: 300px;
+        text-align: center;
+      }
+      #miscDisplay {
+        width: 255px;
+        text-align: center;
+      }
+      .btn {
+        flex-grow: 1;
+        width: 75px;
+      }
+      #buttonClearPrev {
+        width: 45px;
+      }
+    </style>
   </head>
   <body>
   <!--caclulator display -->
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
-      <div class="col-sm-12">
-        <div class="display" id="inputDisplay"></div>
+      <div class="col-xs-12">
+        <div class="display" id="inputDisplay">Input Display</div>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12">
-        <div class="display" id="outputDisplay"></div>
+      <div class="col-xs-12">
+        <div class="display" id="outputDisplay">Output Display</div>
       </div>
     </div>
-    <div class="row">
-      <!-- <div class="btn-group" role="group" aria-label="misc"> -->
-        <div class="col-sm-9">
-          <div class="display" id="miscDisplay"></div>
+      <div class="row">
+        <div class="col-xs-9">
+          <div class="display" id="miscDisplay">Misc Display</div>
         </div>
-        <div class="col-sm-3">
-          <button type="button" class="btn btn-dark btn-md" id="buttonClearPrev" data-key-value="clearPrev"><<</button>
+        <div class="col-xs-3">
+          <button type="button" class="btn btn-dark btn-md" id="buttonClearPrev" data-key-value="clearPrev"><</button>
         </div>
-        <!-- </div> -->
       </div>
-    </div>
+    <!-- </div> -->
   <!--button section-->
     <div class="row">
-      <div class="col-sm-12">
-        <div class="btn-group" role="group" aria-label="operators">
-          <button type="button" class="btn btn-danger btn-lg" id="buttonClearAll" data-key-value="clearArray">C</button>
-          <button type="button" class="btn btn-secondary btn-lg" id="buttonParenthesis" data-key-value="()">( )</button>
-          <button type="button" class="btn btn-secondary btn-lg" id="buttonPercent" data-key-value="%">%</button>
-          <button type="button" class="btn btn-secondary btn-lg" id="buttonDivide" data-key-value="÷">÷</button>
+      <div class="col-xs-12">
+        <div class="btn-group btn-group-lg" role="group" aria-label="operators">
+          <!-- <div class="btn-group"> -->
+            <button type="button" class="btn btn-danger btn-lg" id="buttonClearAll" data-key-value="clearArray">C</button>
+          <!-- </div> -->
+          <!-- <div class="btn-group"> -->
+            <button type="button" class="btn btn-secondary btn-lg" id="buttonParenthesis" data-key-value="()">( )</button>
+          <!-- </div> -->
+          <!-- <div class="btn-group"> -->
+            <button type="button" class="btn btn-secondary btn-lg" id="buttonPercent" data-key-value="%">%</button>
+          <!-- </div> -->
+          <!-- <div class="btn-group"> -->
+            <button type="button" class="btn btn-secondary btn-lg" id="buttonDivide" data-key-value="÷">÷</button>
+          <!-- </div> -->
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12">
-        <div class="btn-group" role="group" aria-label="numbers">
+      <div class="col-xs-12">
+        <div class="btn-group btn-group-lg" role="group" aria-label="numbers">
           <button type="button" class="btn btn-dark btn-lg" id="button7" data-key-value="7">7</button>
           <button type="button" class="btn btn-dark btn-lg"  id="button8" data-key-value="8">8</button>
           <button type="button" class="btn btn-dark btn-lg" id="button9" data-key-value="9">9</button>
@@ -64,8 +100,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12">
-        <div class="btn-group" role="group" aria-label="numbers">
+      <div class="col-xs-12">
+        <div class="btn-group btn-group-lg" role="group" aria-label="numbers">
           <button type="button" class="btn btn-dark btn-lg" id="button4" data-key-value="4">4</button>
           <button type="button" class="btn btn-dark btn-lg" id="button5" data-key-value="5">5</button>
           <button type="button" class="btn btn-dark btn-lg" id="button6" data-key-value="6">6</button>
@@ -74,8 +110,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12">
-        <div class="btn-group" role="group" aria-label="numbers">
+      <div class="col-xs-12">
+        <div class="btn-group btn-group-lg" role="group" aria-label="numbers">
           <button type="button" class="btn btn-dark btn-lg" id="button1" data-key-value="1">1</button>
           <button type="button" class="btn btn-dark btn-lg" id="button2" data-key-value="2">2</button>
           <button type="button" class="btn btn-dark btn-lg" id="button3" data-key-value="3">3</button>
@@ -84,7 +120,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12">
+      <div class="col-xs-12">
         <div class="btn-group" role="group" aria-label="operators">
           <button type="button" class="btn btn-dark btn-lg" id="buttonPosNeg" data-key-value="-">+/-</button>
           <button type="button" class="btn btn-dark btn-lg" id="button0" data-key-value="0">0</button>
