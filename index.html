@@ -42,7 +42,9 @@
       }
       .btn,
       .container > .row > .col > .btn-group {
-        flex: auto; /* shorthand for flex-grow and flex-shrink and flex-basis */
+        /* flex: auto;  */
+        /* shorthand for flex-grow and flex-shrink and flex-basis */
+
         /* width: 100%; */
         /* flex-shrink: 1; */
         /* width: 250px; */
@@ -58,107 +60,71 @@
   <!--caclulator display -->
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xs-12 w-100 h-100">
+      <div class="col w-100">
         <div class="display" id="inputDisplay">Input Display</div>
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-12 w-100 h-100">
+      <div class="col w-100">
         <div class="display" id="outputDisplay">Output Display</div>
       </div>
     </div>
       <div class="row">
-        <div class="col-xs-9 w-100 h-100">
+        <div class="col w-100">
           <div class="display" id="miscDisplay">Misc Display</div>
         </div>
-        <div class="col-xs-3">
-          <button type="button" class="btn btn-dark btn-md" id="buttonClearPrev" data-key-value="clearPrev"><</button>
+        <div class="col">
+          <button type="button" class="btn btn-dark btn-md w-100" id="buttonClearPrev" data-key-value="clearPrev"><</button>
         </div>
       </div>
-    <!-- </div> -->
   <!--button section-->
     <div class="row">
-      <div class="col-xs-12 w-100 h-100">
-        <div class="btn-group btn-group-lg" role="group" aria-label="operators">
-          <!-- <div class="btn-group"> -->
-            <button type="button" class="btn btn-danger btn-lg" id="buttonClearAll" data-key-value="clearArray">C</button>
-          <!-- </div> -->
-          <!-- <div class="btn-group"> -->
-            <button type="button" class="btn btn-secondary btn-lg" id="buttonParenthesis" data-key-value="()">( )</button>
-          <!-- </div> -->
-          <!-- <div class="btn-group"> -->
-            <button type="button" class="btn btn-secondary btn-lg" id="buttonPercent" data-key-value="%">%</button>
-          <!-- </div> -->
-          <!-- <div class="btn-group"> -->
-            <button type="button" class="btn btn-secondary btn-lg" id="buttonDivide" data-key-value="÷">÷</button>
-          <!-- </div> -->
+      <div class="col">
+        <div class="btn-group d-flex" role="group" aria-label="operators">
+            <button type="button" class="btn btn-danger btn-lg w-100" id="buttonClearAll" data-key-value="clearArray">C</button>
+            <button type="button" class="btn btn-secondary btn-lg w-100" id="buttonParenthesis" data-key-value="()">( )</button>
+            <button type="button" class="btn btn-secondary btn-lg w-100" id="buttonPercent" data-key-value="%">%</button>
+            <button type="button" class="btn btn-secondary btn-lg w-100" id="buttonDivide" data-key-value="÷">÷</button>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-12 w-100 h-100">
-        <div class="btn-group btn-group-lg" role="group" aria-label="numbers">
-          <!-- <div class="btn-group"> -->
-            <button type="button" class="btn btn-dark btn-lg" id="button7" data-key-value="7">7</button>
-          <!-- </div> -->
-          <!-- <div class="btn-group"> -->
-            <button type="button" class="btn btn-dark btn-lg"  id="button8" data-key-value="8">8</button>
-          <!-- </div> -->
-          <!-- <div class="btn-group"> -->
-            <button type="button" class="btn btn-dark btn-lg" id="button9" data-key-value="9">9</button>
-          <!-- </div> -->
-          <!-- <div class="btn-group"> -->
-            <button type="button" class="btn btn-secondary btn-lg" id="buttonMultipy" data-key-value="x">x</button>
-          <!-- </div> -->
+      <div class="col">
+        <div class="btn-group d-flex" role="group" aria-label="numbers">
+            <button type="button" class="btn btn-dark btn-lg w-100" id="button7" data-key-value="7">7</button>
+            <button type="button" class="btn btn-dark btn-lg w-100"  id="button8" data-key-value="8">8</button>
+            <button type="button" class="btn btn-dark btn-lg w-100" id="button9" data-key-value="9">9</button>
+            <button type="button" class="btn btn-secondary btn-lg w-100" id="buttonMultipy" data-key-value="x">x</button>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-12 w-100 h-100">
-        <!-- <div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="numbers"> -->
-        <div class="btn-group btn-group-lg" role="group" aria-label="numbers">
-          <!-- <div class="btn-group"> -->
-            <button type="button" class="btn btn-dark btn-lg" id="button4" data-key-value="4">4</button>
-          <!-- </div> -->
-          <!-- <div class="btn-group"> -->
-            <button type="button" class="btn btn-dark btn-lg" id="button5" data-key-value="5">5</button>
-          <!-- </div> -->
-          <!-- <div class="btn-group"> -->
-            <button type="button" class="btn btn-dark btn-lg" id="button6" data-key-value="6">6</button>
-          <!-- </div> -->
-          <!-- <div class="btn-group"> -->
-            <button type="button" class="btn btn-secondary btn-lg" id="buttonSubtract" data-key-value="‒">‒</button>
-          <!-- </div> -->
+      <div class="col">
+        <div class="btn-group d-flex" role="group" aria-label="numbers">
+            <button type="button" class="btn btn-dark btn-lg w-100" id="button4" data-key-value="4">4</button>
+            <button type="button" class="btn btn-dark btn-lg w-100" id="button5" data-key-value="5">5</button>
+            <button type="button" class="btn btn-dark btn-lg w-100" id="button6" data-key-value="6">6</button>
+            <button type="button" class="btn btn-secondary btn-lg w-100" id="buttonSubtract" data-key-value="‒">‒</button>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-12 w-100 h-100">
-        <!-- <div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="numbers"> -->
-        <div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="numbers">
-          <!-- <div class="btn-group"> -->
-            <button type="button" class="btn btn-dark btn-lg" id="button1" data-key-value="1">1</button>
-          <!-- </div> -->
-          <!-- <div class="btn-group"> -->
-            <button type="button" class="btn btn-dark btn-lg" id="button2" data-key-value="2">2</button>
-          <!-- </div> -->
-          <!-- <div class="btn-group"> -->
-            <button type="button" class="btn btn-dark btn-lg" id="button3" data-key-value="3">3</button>
-          <!-- </div> -->
-          <!-- <div class="btn-group"> -->
-            <button type="button" class="btn btn-secondary btn-lg" id="buttonAdd" data-key-value="+">+</button>
-          <!-- </div> -->
+      <div class="col">
+        <div class="btn-group d-flex" role="group" aria-label="numbers">
+            <button type="button" class="btn btn-dark btn-lg w-100" id="button1" data-key-value="1">1</button>
+            <button type="button" class="btn btn-dark btn-lg w-100" id="button2" data-key-value="2">2</button>
+            <button type="button" class="btn btn-dark btn-lg w-100" id="button3" data-key-value="3">3</button>
+            <button type="button" class="btn btn-secondary btn-lg w-100" id="buttonAdd" data-key-value="+">+</button>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-12 w-100 h-100">
-        <!-- <div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="operators"> -->
-        <div class="btn-group btn-group-lg" role="group" aria-label="operators">
-          <button type="button" class="btn btn-dark btn-lg" id="buttonPosNeg" data-key-value="-">+/-</button>
-          <button type="button" class="btn btn-dark btn-lg" id="button0" data-key-value="0">0</button>
-          <button type="button" class="btn btn-dark btn-lg" id="buttonDecimal" data-key-value=".">.</button>
-          <button type="button" class="btn btn-success btn-lg" id="buttonEquals" data-key-value="=">=</button> <!-- add "disabled" to class name -->
+      <div class="col">
+        <div class="btn-group d-flex" role="group" aria-label="operators">
+          <button type="button" class="btn btn-dark btn-lg w-100" id="buttonPosNeg" data-key-value="-">+/-</button>
+          <button type="button" class="btn btn-dark btn-lg w-100" id="button0" data-key-value="0">0</button>
+          <button type="button" class="btn btn-dark btn-lg w-100" id="buttonDecimal" data-key-value=".">.</button>
+          <button type="button" class="btn btn-success btn-lg w-100" id="buttonEquals" data-key-value="=">=</button> <!-- add "disabled" to class name -->
         </div>
       </div>
     </div>
