@@ -18,13 +18,13 @@
     <!-- external stylesheet -->
     <!-- <link rel="stylesheet" href="./calculator_styles.css" /> -->
     <style>
-      .container-fluid {
+      .container {
         display: flex;
         flex-flow: column nowrap; /*refers to positioning of elemenets along main axis of parent - combines flex-direction and flex-wrap*/
         border: 1px solid green;
         /* height: 500px; */
         /* max-width: 1000px; */
-        /* align-items: stretch;  */
+        /* align-items: ;  */
         /*aka align-cross - refers to positioning of elements along cross axis of parent*/
         /*justify-content: ;*/
         /*aka align-main - refers to positioning along the main axis of parent*/
@@ -32,7 +32,7 @@
       .display {
         background-color: #343a40;
         color: white;
-        height: 47px;
+        height: 59px;
         /* width: 1000px; */
         text-align: center;
       }
@@ -40,17 +40,30 @@
         /* width: 900px; */
         text-align: center;
       }
+      .px-2 { /* removes 15px padding automatically included in bootstrap framework */
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+      .pl-1 { /* removes 15px padding automatically included in bootstrap framework */
+        padding-left: 0 !important;
+      }
+      .pr-1 { /* removes 15px padding automatically included in bootstrap framework */
+        padding-right: 0 !important;
+      }
       .btn,
       .container > .row > .col > .btn-group {
         /* flex: auto;  */
         /* shorthand for flex-grow and flex-shrink and flex-basis */
-
-        /* width: 100%; */
+        /* height: 200px; */
         /* flex-shrink: 1; */
+        /* width: 100%; */
         /* width: 250px; */
-        /* height: 75px; */
       }
       #buttonClearPrev {
+        width: 100%;
+        height: 100%;
+        /* height: 200px; */
+        /* flex-shrink: 1; */
         /* width: 98px; */
         /* height: 47px; */
       }
@@ -58,25 +71,25 @@
   </head>
   <body>
   <!--caclulator display -->
-  <div class="container-fluid">
+  <div class="container px-2">
     <div class="row">
-      <div class="col w-100">
+      <div class="col-12">
         <div class="display" id="inputDisplay">Input Display</div>
       </div>
     </div>
     <div class="row">
-      <div class="col w-100">
+      <div class="col-12">
         <div class="display" id="outputDisplay">Output Display</div>
       </div>
     </div>
       <div class="row">
-        <div class="col w-100">
+        <div class="col-9 pr-1">
           <div class="display" id="miscDisplay">Misc Display</div>
         </div>
-        <div class="col">
-          <button type="button" class="btn btn-dark btn-md w-100" id="buttonClearPrev" data-key-value="clearPrev"><</button>
+        <div class="col-3 pl-1">
+            <button type="button" class="btn btn-dark btn-md" id="buttonClearPrev" data-key-value="clearPrev"><<</button>
+          </div>
         </div>
-      </div>
   <!--button section-->
     <div class="row">
       <div class="col">
