@@ -19,6 +19,7 @@
     <!-- <link rel="stylesheet" href="./calculator_styles.css" /> -->
     <style>
       .container-fluid {
+        overflow: hidden; removes vertical and horizontal scrollbars
         display: flex;
         flex-flow: column nowrap; /*refers to positioning of elemenets along main axis of parent - combines flex-direction and flex-wrap*/
         border: 1px solid green;
@@ -71,7 +72,7 @@
   </head>
   <body>
   <!--caclulator display -->
-  <div class="container-fluid px-2">
+  <div class="container-fluid px-2" id="mainContainer">
     <div class="row">
       <div class="col-12">
         <div class="display" id="inputDisplay">Input Display</div>
@@ -162,6 +163,29 @@
     // const decimalLogic2 = /\.(?![0-9*][÷x‒+%])/;
     // const decimalLogic = /\.+(?![0-9*]?![÷|x|‒|+|%])/g;
     const decimalLogic = /\.(?![0-9]+[÷|x|‒|+|%])/;
+    // Dynamically change height of elements based on viewport height
+    let changeDisplayHeight = viewportHeight => {
+      dynamicElementHeight = viewportHeight / 8;
+      for (counter = 0; counter < document.getElementsByClassName("display").length; counter++) {
+        document.getElementsByClassName("display")[counter].style.height = dynamicElementHeight.toString() + "px"; // change display heights
+      }
+    }
+    let changeButtonHeight = viewportHeight => {
+      dynamicElementHeight = viewportHeight / 8;
+      for (counter = 0; counter < document.getElementsByClassName("btn").length; counter++) {
+        document.getElementsByClassName("btn")[counter].style.height = dynamicElementHeight.toString() + "px";
+      }
+    }
+    // Get height of viewport and adjust container height accordingly
+    var heightCalculated = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    if (heightCalculated != 0){
+      document.getElementById("mainContainer").style.height = heightCalculated.toString() + "px"; // adjust container height
+      console.log("viewport height changed!: " + heightCalculated);
+      console.log("mainContainer height = " );
+      changeDisplayHeight(heightCalculated);
+      changeButtonHeight(heightCalculated);
+    }
     // Multiplication function
     let multiply = numbers => {
       let numArray = numbers;
