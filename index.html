@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <!-- bootstrap 4 -->
     <!-- mobile first rendering and touch zooming -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <!-- jQuery library -->
@@ -19,13 +19,13 @@
     <!-- <link rel="stylesheet" href="./calculator_styles.css" /> -->
     <style>
       .container-fluid {
-        overflow: hidden; removes vertical and horizontal scrollbars
+        overflow: hidden; /*removes vertical and horizontal scrollbars*/
         display: flex;
         flex-flow: column nowrap; /*refers to positioning of elemenets along main axis of parent - combines flex-direction and flex-wrap*/
         border: 1px solid green;
         /* height: 500px; */
         /* max-width: 1000px; */
-        /* align-items: ;  */
+        /* align-items: stretch; this is the default so not necessary */
         /*aka align-cross - refers to positioning of elements along cross axis of parent*/
         /*justify-content: ;*/
         /*aka align-main - refers to positioning along the main axis of parent*/
@@ -34,12 +34,14 @@
         background-color: #343a40;
         color: white;
         height: 59px;
+        display: flex;
         /* width: 1000px; */
         text-align: center;
       }
       #miscDisplay {
         /* width: 900px; */
         text-align: center;
+        display: flex;
       }
       .px-2 { /* removes 15px padding automatically included in bootstrap framework */
         padding-left: 0 !important;
@@ -55,13 +57,15 @@
       .container > .row > .col > .btn-group {
         /* flex: auto;  */
         /* shorthand for flex-grow and flex-shrink and flex-basis */
-        height: 75px;
+        display: flex;
+        height: 100px;
         /* flex-shrink: 1; */
         /* width: 250px; */
       }
       #buttonClearPrev {
         width: 100%;
-        height: 100%;
+        display: flex;
+        /* height: 100%; */
         border-radius: 0px 0px 3px 0px;
         /* height: 200px; */
         /* flex-shrink: 1; */
@@ -157,12 +161,12 @@
     const clearAllArrayValues = "clearArray"
     const numSearch = /[0-9]/; // find a character that is not a digit
     const decimalSearch = /([0-9, .])/; // find a character that is not a digit or decimal
+    const decimalLogic = /\.(?![0-9]+[÷|x|‒|+|%])/;
     // const decimalLogic = /\W[.](?![÷|x|‒|+|%])/; // search for non-word character \W decimal [.] not followed ?! by any operator
     // const decimalLogic = /\.(?![÷x‒+%])/; // search for non-word character \W decimal [.] not followed ?! by any operator
     // const decimalLogic2 = /\.(?![0-9*][÷x‒+%])/;
     // const decimalLogic2 = /\.(?![0-9*][÷x‒+%])/;
     // const decimalLogic = /\.+(?![0-9*]?![÷|x|‒|+|%])/g;
-    const decimalLogic = /\.(?![0-9]+[÷|x|‒|+|%])/;
     // Dynamically change height of elements based on viewport height
     let changeDisplayHeight = viewportHeight => {
       dynamicElementHeight = viewportHeight / 8;
@@ -251,7 +255,7 @@
         activateButtons();
       });
     };
-    // input logic
+    // key input logic
     keypressInput = keypressValue => {
       if (operatorValue.includes(keypressValue)) { // operator is input
         verifyOpLogic(keypressValue);
@@ -266,6 +270,7 @@
       } else if (clearAllArrayValues == keypressValue) {
           inputsArray = [];
           displayInput();
+          disableButtons()
       }
     };
 
@@ -340,7 +345,9 @@
     // update user display after keypress reviewed
     displayInput = keypressValue => {
       document.getElementById('inputDisplay').innerHTML = inputsArray.join("");
-      // document.getElementById('inputDisplay').innerHTML += keypressValue;
+      if inputsArray.join("") == "" {
+        disableButtons()
+      }
     }
     inputHistory = keypress => {
 
@@ -356,7 +363,7 @@
     activateButtons = keypress => {
       if (inputsArray.length != 0) {
         document.getElementById('buttonClearAll').classList.remove('disabled');
-        document.getElementById('buttonPercent').classList.remove('disabled');
+        // document.getElementById('buttonPercent').classList.remove('disabled');
         document.getElementById('buttonDivide').classList.remove('disabled');
         document.getElementById('buttonMultipy').classList.remove('disabled');
         document.getElementById('buttonSubtract').classList.remove('disabled');
@@ -368,6 +375,7 @@
     disableButtons = keypress => {
       if (inputsArray.length == 0) {
         document.getElementById('buttonClearAll').classList.add('disabled');
+        document.getElementById('buttonParenthesis').classList.add('disabled');
         document.getElementById('buttonPercent').classList.add('disabled');
         document.getElementById('buttonDivide').classList.add('disabled');
         document.getElementById('buttonMultipy').classList.add('disabled');
