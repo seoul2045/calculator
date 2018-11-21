@@ -257,9 +257,9 @@
     };
     // key input logic
     keypressInput = keypressValue => {
-      if (operatorValue.includes(keypressValue)) { // operator is input
+      if (operatorValue.includes(keypressValue)) { // an operator is input
         verifyOpLogic(keypressValue);
-      } else if (numSearch.test(keypressValue)) { // only numbers input
+      } else if (numSearch.test(keypressValue)) { // a number is input
           inputsArray.push(keypressValue);
           displayInput();
       } else if (decimalSymbol.includes(keypressValue)) {
@@ -272,6 +272,7 @@
           displayInput();
           disableButtons()
       }
+      arrayCounter();
     };
 
     let verifyDecLogic = keypressValue => {
@@ -299,7 +300,7 @@
     // }
 
     let verifyOpLogic = keypressValue => {
-      if (inputsArray.length == 0) { // check if array is empty
+      if (inputsArray.length == 0) { // check if array is empty;
         return;
       } else if (operatorValue.includes(inputsArray[inputsArray.length - 1])) { // splice previously entered operator
           inputsArray.splice((inputsArray.length - 1), 1, keypressValue);
@@ -311,7 +312,29 @@
               displayInput();
             }
       }
-    };
+    }
+
+    let arrayCounter = indices => {
+      if (inputsArray.length % 3 == 0) {
+        console.log('even number of array numbers')
+        calculate();
+      }
+    }
+
+    let calculate = numbers => {
+      console.log("calculate() called");
+      let indices = inputsArray.length + 1;
+      let tempResult;
+      for(counter = 0; counter < (indices - 1); counter++) {
+        var1 = inputsArray[(counter + 0)];
+        var2 = inputsArray[(counter + 1)];
+        var3 = inputsArray[(counter + 2)];
+        console.log("var1 = " + var1);
+        console.log("var2 = " + var1);
+        console.log("var3 = " + var1);
+      }
+      // document.getElementById("outputDisplay").innerHTML =
+    }
     // !operatorValue.includes(inputsArray.length - 1)
     // !inputsArray[inputsArray.length - 1] == keypressValue)
     // keypressInput = keypressValue => {
@@ -342,10 +365,10 @@
     //       }
     //   };
     // };
-    // update user display after keypress reviewed
+    // update user display using keypress array elements; clear display if array empty
     displayInput = keypressValue => {
       document.getElementById('inputDisplay').innerHTML = inputsArray.join("");
-      if inputsArray.join("") == "" {
+      if (inputsArray.join("") == "") {
         disableButtons()
       }
     }
