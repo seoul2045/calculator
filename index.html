@@ -232,15 +232,26 @@
       return solution;
     }
     // Addition function
-    let add = numbers => {
-      let numArray = numbers;
-      console.log("numArray value: " + numArray);
-      let solution = numArray.reduce(function(total, num) {
-        return total + num;
-      })
-      console.log(solution);
+    let add = (number1, number2) => {
+      console.log("numArray values: " + number1 + " " + number2);
+      let solution = number1 + number2;
+      // let solution = numArray.reduce(function(total, num) {
+      //   return total + num;
+      // })
+      console.log("addition solution: " + solution);
       return solution;
     }
+
+    // let add2 = numbers => {
+    //   let numArray = numbers;
+    //   console.log("numArray value: " + numArray);
+    //   let solution = numArray.reduce(function(total, num) {
+    //     return total + num;
+    //   })
+    //   console.log(solution);
+    //   return solution;
+    // }
+
     // Operation function
     let operate = numbers => {
 
@@ -323,16 +334,32 @@
 
     let calculate = numbers => {
       console.log("calculate() called");
-      let indices = inputsArray.length + 1;
-      let tempResult;
-      for(counter = 0; counter < (indices - 1); counter++) {
-        var1 = inputsArray[(counter + 0)];
-        var2 = inputsArray[(counter + 1)];
-        var3 = inputsArray[(counter + 2)];
-        console.log("var1 = " + var1);
-        console.log("var2 = " + var1);
-        console.log("var3 = " + var1);
-      }
+      let calculatedResult;
+      let counter = 0;
+      inputsArray.map(value => {
+        counter = counter + 1;
+        console.log("counter: " + counter);
+        if (operatorValue.includes(value)) { // found an operator
+          console.log("yes operator " + value);
+        } else if (numSearch.test(value)) { // found a number
+          console.log("yes num " + value);
+        } else if (decimalSymbol.includes(value)) { // found a decimal
+          console.log("yes decimal " + value);
+        }
+        return calculatedResult;
+      });
+
+      // let indices = inputsArray.length + 1;
+      // let tempResult;
+      // for(counter = 0; counter < (indices - 1); counter++) {
+      //   var1 = inputsArray[(counter + 0)];
+      //   var2 = inputsArray[(counter + 1)];
+      //   var3 = inputsArray[(counter + 2)];
+      //   console.log("var1 = " + var1);
+      //   console.log("var2 = " + var2);
+      //   console.log("var3 = " + var3);
+      //   console.log("counter = " + counter);
+      // }
       // document.getElementById("outputDisplay").innerHTML =
     }
     // !operatorValue.includes(inputsArray.length - 1)
